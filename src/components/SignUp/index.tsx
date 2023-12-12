@@ -1,61 +1,7 @@
+import { GetServerSideProps } from "next";
 import { Props } from "next/script";
 
 const SignupForm = (props: Props) => {
-  //const { isXg, accentColor, isGlue, isFifo, label } = props
-
-  //const [country, setCountry] = useState(defaultCountryDetails)
-  // const [countryLoading, setCountryLoading] = useState(true)
-
-  // const getLocation = async () => {
-  //   const countryFromIp = await getUserCountryFromIp()
-  //   countryFromIp && setCountry(countryFromIp)
-  //   setCountryLoading(false)
-  // }
-
-  // useEffect(() => {
-  //   getLocation()
-  // }, [])
-
-  // const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false)
-  // const [showPassword, setShowPassword] = useState(false)
-
-  // const router = useRouter()
-  // const parsedURLQueryParams = useGetParsedURLQueryParams()
-
-  //   const form = useForm<LoginFormValues>({
-  //     initialValues: {
-  //       phone: "",
-  //       password: "",
-  //     },
-  //   validate: {
-  //     phone: (value) => {
-  //       if (typeof value !== 'string') return AUTH_VALIDATION_ERRORS.INVALID_PHONE_FORMAT
-  //       else if (value.length < 1) {
-  //         return AUTH_VALIDATION_ERRORS.PHONE_REQUIRED
-  //       }
-  //     },
-  //     password: (value) => {
-  //       if (value.length < 8) return AUTH_VALIDATION_ERRORS.PASSWORD_REQUIRED
-  //       else if (value.length > 64) {
-  //         return AUTH_VALIDATION_ERRORS.MAXIMUM_PASSWORD_LENGTH
-  //       } else if (!/[a-z]/.test(value)) {
-  //         return AUTH_VALIDATION_ERRORS.LOWERCASE_REQUIRED
-  //       } else if (!/\d/.test(value)) {
-  //         return AUTH_VALIDATION_ERRORS.NUMBER_REQUIRED
-  //       } else if (!/[^a-zA-Z0-9]/.test(value)) {
-  //         return AUTH_VALIDATION_ERRORS.SPECIAL_CHARACTER_REQUIRED
-  //       }
-  //     },
-  //   },
-  //     validateInputOnBlur: true,
-  //   });
-  //   const { errors, values } = form;
-
-  // const isButtonDisabled =
-  //   !isNilOrEmpty(errors.phone) ||
-  //   !isNilOrEmpty(errors.password) ||
-  //   isNilOrEmpty(values.password) ||
-  //   isNilOrEmpty(values.phone)
   return (
     <div className="flex h-screen flex-col justify-center px-6 py-12 lg:px-8 bg-white">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -162,3 +108,9 @@ const SignupForm = (props: Props) => {
 };
 
 export default SignupForm;
+
+// export const getServerSideProps = (async () => {
+//     const res = await fetch()
+//     const repo = await res.json()
+//     return { props: { repo } }
+//   })
