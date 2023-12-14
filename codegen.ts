@@ -4,7 +4,7 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
 const config: CodegenConfig = {
   generates: {
     "./src/services/api/fileServer.ts": {
-      schema: envConfig.SERVER_URL + "/graphql",
+      schema: envConfig.SERVER_URL,
       documents: "./src/graphql/user/*.gql",
       plugins: [
         {
