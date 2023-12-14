@@ -9,7 +9,7 @@ const endpoint: string = HELP_PORTAL_SERVER_URL || "";
 //const graphQLClient = new GraphQLClient(`${endpoint}/graphql`);
 
 const graphQlService = (): GraphQLClient => {
-  const gqlClient = new GraphQLClient(HELP_PORTAL_SERVER_URL as string);
+  const gqlClient = new GraphQLClient(HELP_PORTAL_SERVER_URL);
 
   // const token = getTokens().accessToken;
 
