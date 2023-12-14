@@ -21,7 +21,6 @@ const SignUp = () => {
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     e.preventDefault();
-    console.log("Here", name, email, password);
     signupMutation.mutate({ createUserInput: { name, email, password } });
   };
 
