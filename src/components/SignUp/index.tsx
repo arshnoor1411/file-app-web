@@ -1,15 +1,27 @@
-import { GetServerSideProps } from "next";
-import { Props } from "next/script";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 
-const SignupForm = (props: Props) => {
+interface SignUpProps {
+  name: string;
+  email: string;
+  password: string;
+  setName: Dispatch<SetStateAction<string>>;
+  setEmail: Dispatch<SetStateAction<string>>;
+  setPassword: Dispatch<SetStateAction<string>>;
+  onSubmit: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
+}
+const SignupForm = (props: SignUpProps) => {
+  const { name, email, password, setName, setEmail, setPassword, onSubmit } =
+    props;
+  console.log(props);
+
   return (
     <div className="flex h-screen flex-col justify-center px-6 py-12 lg:px-8 bg-white">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img
+        {/* <img
           className="mx-auto h-10 w-auto"
           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
           alt="Your Company"
-        />
+        /> */}
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign up to your account
         </h2>
@@ -19,23 +31,28 @@ const SignupForm = (props: Props) => {
         <form className="space-y-6" action="#" method="POST">
           <div>
             <label
-              htmlFor="firstname"
+              htmlFor="name"
               className="block text-sm font-medium leading-6 text-gray-900 whitespace-normal space-x"
             >
               First Name
             </label>
             <div className="mt-2">
               <input
-                id="firstname"
-                name="firstname"
-                type="firstname"
-                autoComplete="firstname"
+                id="name"
+                name="name"
+                type="name"
+                autoComplete="name"
                 required
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  console.log(e.target.value);
+                }}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
-          <div>
+          {/* <div>
             <label
               htmlFor="lastname"
               className="block text-sm font-medium leading-6 text-gray-900"
@@ -52,7 +69,7 @@ const SignupForm = (props: Props) => {
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
-          </div>
+          </div> */}
           <div>
             <label
               htmlFor="email"
@@ -67,6 +84,11 @@ const SignupForm = (props: Props) => {
                 type="email"
                 autoComplete="email"
                 required
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  console.log(e.target.value);
+                }}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -86,8 +108,13 @@ const SignupForm = (props: Props) => {
                 id="password"
                 name="password"
                 type="password"
-                autoComplete="current-password"
+                autoComplete="password"
                 required
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  //console.log(e.target.value);
+                }}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -97,6 +124,9 @@ const SignupForm = (props: Props) => {
             <button
               type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              onClick={(e) => {
+                onSubmit(e);
+              }}
             >
               Sign Up
             </button>

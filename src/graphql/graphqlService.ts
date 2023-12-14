@@ -6,12 +6,10 @@ const HELP_PORTAL_SERVER_URL = envConfig.SERVER_URL;
 
 const endpoint: string = HELP_PORTAL_SERVER_URL || "";
 
-const graphQLClient = new GraphQLClient(`${endpoint}/graphql`);
+//const graphQLClient = new GraphQLClient(`${endpoint}/graphql`);
 
-const graphQlService = async () => {
-  const gqlClient = new GraphQLClient(
-    `http://localhost:3000/graphql` as string
-  );
+const graphQlService = (): GraphQLClient => {
+  const gqlClient = new GraphQLClient(HELP_PORTAL_SERVER_URL as string);
 
   // const token = getTokens().accessToken;
 
