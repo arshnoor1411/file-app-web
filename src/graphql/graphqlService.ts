@@ -1,4 +1,5 @@
 import { envConfig } from "@/utils/envConfig";
+import { getTokens } from "@/utils/helper";
 
 import { GraphQLClient } from "graphql-request";
 
@@ -11,11 +12,11 @@ const endpoint: string = HELP_PORTAL_SERVER_URL || "";
 const graphQlService = (): GraphQLClient => {
   const gqlClient = new GraphQLClient(HELP_PORTAL_SERVER_URL);
 
-  // const token = getTokens().accessToken;
+  const token = getTokens().accessToken;
 
-  // if (token) {
-  //   gqlClient.setHeader("authorization", `Bearer ${token}`);
-  // }
+  if (token) {
+    gqlClient.setHeader("authorization", `Bearer ${token}`);
+  }
 
   return gqlClient;
 };

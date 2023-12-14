@@ -1,61 +1,16 @@
-import { Props } from "next/script";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 
-const LoginForm = (props: Props) => {
-  //const { isXg, accentColor, isGlue, isFifo, label } = props
+interface SignInProps {
+  email: string;
+  password: string;
+  setEmail: Dispatch<SetStateAction<string>>;
+  setPassword: Dispatch<SetStateAction<string>>;
+  onSubmit: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
+}
 
-  //const [country, setCountry] = useState(defaultCountryDetails)
-  // const [countryLoading, setCountryLoading] = useState(true)
+const LoginForm = (props: SignInProps) => {
+  const { email, password, setEmail, setPassword, onSubmit } = props;
 
-  // const getLocation = async () => {
-  //   const countryFromIp = await getUserCountryFromIp()
-  //   countryFromIp && setCountry(countryFromIp)
-  //   setCountryLoading(false)
-  // }
-
-  // useEffect(() => {
-  //   getLocation()
-  // }, [])
-
-  // const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false)
-  // const [showPassword, setShowPassword] = useState(false)
-
-  // const router = useRouter()
-  // const parsedURLQueryParams = useGetParsedURLQueryParams()
-
-  //   const form = useForm<LoginFormValues>({
-  //     initialValues: {
-  //       phone: "",
-  //       password: "",
-  //     },
-  //   validate: {
-  //     phone: (value) => {
-  //       if (typeof value !== 'string') return AUTH_VALIDATION_ERRORS.INVALID_PHONE_FORMAT
-  //       else if (value.length < 1) {
-  //         return AUTH_VALIDATION_ERRORS.PHONE_REQUIRED
-  //       }
-  //     },
-  //     password: (value) => {
-  //       if (value.length < 8) return AUTH_VALIDATION_ERRORS.PASSWORD_REQUIRED
-  //       else if (value.length > 64) {
-  //         return AUTH_VALIDATION_ERRORS.MAXIMUM_PASSWORD_LENGTH
-  //       } else if (!/[a-z]/.test(value)) {
-  //         return AUTH_VALIDATION_ERRORS.LOWERCASE_REQUIRED
-  //       } else if (!/\d/.test(value)) {
-  //         return AUTH_VALIDATION_ERRORS.NUMBER_REQUIRED
-  //       } else if (!/[^a-zA-Z0-9]/.test(value)) {
-  //         return AUTH_VALIDATION_ERRORS.SPECIAL_CHARACTER_REQUIRED
-  //       }
-  //     },
-  //   },
-  //     validateInputOnBlur: true,
-  //   });
-  //   const { errors, values } = form;
-
-  // const isButtonDisabled =
-  //   !isNilOrEmpty(errors.phone) ||
-  //   !isNilOrEmpty(errors.password) ||
-  //   isNilOrEmpty(values.password) ||
-  //   isNilOrEmpty(values.phone)
   return (
     <div className="flex h-screen flex-col justify-center px-6 py-12 lg:px-8 bg-white">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -85,6 +40,10 @@ const LoginForm = (props: Props) => {
                 type="email"
                 autoComplete="email"
                 required
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -114,6 +73,10 @@ const LoginForm = (props: Props) => {
                 type="password"
                 autoComplete="current-password"
                 required
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -123,8 +86,11 @@ const LoginForm = (props: Props) => {
             <button
               type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              onClick={(e) => {
+                onSubmit(e);
+              }}
             >
-              Sign in
+              Sign In
             </button>
           </div>
         </form>
