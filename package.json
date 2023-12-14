@@ -17,6 +17,8 @@
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-react-query": "^6.0.0",
+    "@tanstack/react-query": "^4.36.1",
+    "@tanstack/react-query-devtools": "^4.36.1",
     "axios": "^1.6.2",
     "graphql": "^16.8.1",
     "graphql-client": "^2.0.1",
@@ -25,7 +27,9 @@
     "ramda": "^0.29.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-hot-toast": "^2.4.1"
+    "react-hot-toast": "^2.4.1",
+    "react-query": "^3.39.3",
+    "react-query-devtools": "^2.6.3"
   },
   "devDependencies": {
     "@types/node": "^20",
